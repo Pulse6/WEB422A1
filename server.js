@@ -18,7 +18,7 @@ const cors = require('cors');
 const app = express();
 app.use(cors());
 app.use(express.json());
-const ListingsDB = require("../modules/listingsDB.js");
+const ListingsDB = require("./modules/listingsDB.js");
 const db = new ListingsDB();
 
 const HTTP_PORT = 8080;
