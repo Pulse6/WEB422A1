@@ -23,14 +23,6 @@ const db = new ListingsDB();
 
 const HTTP_PORT = 8080;
 
-db.initialize(process.env.MONGODB).then(() => {
-  app.listen(HTTP_PORT, () => {
-    console.log(`server listening on: http://localhost:${HTTP_PORT}`);
-  });
-}).catch((err) => {
-  console.log(err);
-});
-
 app.get('/', (req, res) => {
   res.json({ message: 'API Listening' });
 });
@@ -83,6 +75,17 @@ app.delete('/api/listings/:id', (req, res) => {
     .catch((error) => res.status(500).json({ error: 'Internal Server Error' }));
 });
 
+app.all('*', (req,res) => {
+  res.json({"every thing":"is awesome"})
+})
+
 // app.listen(port, () => {
 //   console.log(`Server ready, running on http://localhost:${port} ${process.env.USER}`);
 // });
+db.initialize(process.env.MONGODB).then(() => {
+  app.listen(HTTP_PORT, () => {
+    console.log(`server listening on: http://localhost:${HTTP_PORT}`);
+  });
+}).catch((err) => {
+  console.log(err);
+});
