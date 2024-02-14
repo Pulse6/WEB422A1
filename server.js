@@ -35,7 +35,7 @@ app.post('/api/listings', (req, res) => {
 });
 // GET /api/listings
 app.get('/api/listings', (req, res) => {
-  db.getAllListings({ page: req.query.page, perPage: req.query.perPage, name: req.query.name })
+  db.getAllListings(req.query.page, req.query.perPage, req.query.name)
     .then((listings) => res.status(200).json(listings))
     .catch((error) => res.status(500).json({ error: 'Internal Server Error' }));
 });

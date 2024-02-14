@@ -29,6 +29,7 @@ module.exports = class ListingsDB {
   }
 
   getAllListings(page, perPage, name) {
+    // console.log(`name: ${name},perPage: ${perPage}, page: ${page}`)
     let findBy = name ? { "name": { "$regex": name, "$options": "i" } } : {}
 
     if (+page && +perPage) {
